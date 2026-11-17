@@ -1,0 +1,50 @@
+services:
+  # Applies the Prisma schema to ./prisma/dev.db before the app starts.
+  # Idempotent: safe to run on every `docker compose up`.
+  db-push:
+    build:
+      context: .
+      target: migrator
+    restart: "no"
+    environment:
+      DATABASE_URL: file:/app/prisma/dev.db
+    volumes:
+      - ./prisma:/app/prisma
+
+  # Production Next.js standalone server.
+  # Data survives rebuilds via the ./prisma and ./public/uploads bind mounts
+  # (SQLite database + uploaded images/documents live on the host).
+  app:
+    build:
+      context: .
+      target: runner
+    restart: unless-stopped
+    ports:
+      - "3000:3000"
+    environment:
+      DATABASE_URL: file:/app/prisma/dev.db
+      JWT_SECRET: ${JWT_SECRET:?JWT_SECRET .env faylida ko'rsatilishi shart}
+      HOSTNAME: 0.0.0.0
+      PORT: "3000"
+    volumes:
+      - ./prisma:/app/prisma
+      - ./public/uploads:/app/public/uploads
+    depends_on:
+      db-push:
+        condition: service_completed_successfully
+
+  # Optional seeding (demo data + admin user admin/admin123):
+  #   docker compose run --rm seed
+  seed:
+    build:
+      context: .
+      target: migrator
+    profiles: ["seed"]
+    environment:
+      DATABASE_URL: file:/app/prisma/dev.db
+    volumes:
+      - ./prisma:/app/prisma
+    command: ["npx", "tsx", "prisma/seed.ts"]
+    depends_on:
+      db-push:
+        condition: service_completed_successfully

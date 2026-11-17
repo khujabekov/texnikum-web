@@ -1,0 +1,100 @@
+generator client {
+  provider = "prisma-client"
+  output   = "../src/generated/prisma"
+}
+
+datasource db {
+  provider = "sqlite"
+}
+
+model SiteConfig {
+  id             Int     @id @default(1)
+  collegeName    String
+  slogan         String
+  logoUrl        String  @default("")
+  heroTitle      String
+  heroSubtitle   String
+  heroImageUrl   String  @default("")
+  aboutTitle     String
+  aboutText      String
+  aboutImageUrl  String  @default("")
+  stat1Label     String  @default("")
+  stat1Value     String  @default("")
+  stat2Label     String  @default("")
+  stat2Value     String  @default("")
+  stat3Label     String  @default("")
+  stat3Value     String  @default("")
+  stat4Label     String  @default("")
+  stat4Value     String  @default("")
+  address        String  @default("")
+  phones         String  @default("")
+  email          String  @default("")
+  workHours      String  @default("")
+  telegramUrl    String  @default("")
+  instagramUrl   String  @default("")
+  youtubeUrl     String  @default("")
+  mapEmbedUrl    String  @default("")
+  footerText     String  @default("")
+  showStats      Boolean @default(true)
+  showDirections Boolean @default(true)
+  showNews       Boolean @default(true)
+  showStaff      Boolean @default(true)
+  showGallery    Boolean @default(true)
+}
+
+model Direction {
+  id        Int     @id @default(autoincrement())
+  title     String
+  slug      String  @unique
+  shortDesc String
+  fullDesc  String
+  duration  String
+  eduForm   String
+  imageUrl  String  @default("")
+  order     Int     @default(0)
+}
+
+model News {
+  id        Int      @id @default(autoincrement())
+  title     String
+  slug      String   @unique
+  category  String
+  imageUrl  String   @default("")
+  content   String
+  views     Int      @default(0)
+  published Boolean  @default(true)
+  createdAt DateTime @default(now())
+}
+
+model Staff {
+  id         Int     @id @default(autoincrement())
+  fullName   String
+  role       String
+  department String
+  bio        String  @default("")
+  imageUrl   String  @default("")
+  order      Int     @default(0)
+}
+
+model Gallery {
+  id        Int      @id @default(autoincrement())
+  title     String
+  category  String
+  imageUrl  String
+  createdAt DateTime @default(now())
+}
+
+model Document {
+  id          Int      @id @default(autoincrement())
+  title       String
+  description String   @default("")
+  fileUrl     String
+  category    String
+  createdAt   DateTime @default(now())
+}
+
+model Admin {
+  id           Int    @id @default(autoincrement())
+  username     String @unique
+  passwordHash String
+}

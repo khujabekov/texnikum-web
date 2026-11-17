@@ -1,0 +1,26 @@
+node_modules
+.next
+.git
+.gitignore
+.env
+.env.*
+.claude
+.agents
+.windsurf
+skills-lock.json
+tsconfig.tsbuildinfo
+npm-debug.log*
+*.log
+
+# Never bake local databases into build context/build-time prerenders
+prisma/*.db
+# Uploaded files stay on the host via the bind mount
+public/uploads/*
+!public/uploads/.gitkeep
+
+AGENTS.md
+README.md
+Dockerfile
+docker-compose.yml
+.dockerignore
+eslint.config.mjs
