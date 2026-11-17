@@ -1,9 +1,30 @@
 "use client";
 
+import {
+  Compass,
+  GraduationCap,
+  Image as ImageIcon,
+  Newspaper,
+  UserRound,
+  type LucideIcon,
+} from "lucide-react";
 import Image from "next/image";
-import { useState, type ComponentType } from "react";
+import { useState } from "react";
 
-type IconType = ComponentType<{ className?: string }>;
+export type FallbackIconName =
+  | "newspaper"
+  | "compass"
+  | "graduation"
+  | "image"
+  | "user";
+
+const FALLBACK_ICONS: Record<FallbackIconName, LucideIcon> = {
+  newspaper: Newspaper,
+  compass: Compass,
+  graduation: GraduationCap,
+  image: ImageIcon,
+  user: UserRound,
+};
 
 type SafeImageProps = {
   src: string | null | undefined;
@@ -12,7 +33,7 @@ type SafeImageProps = {
   sizes?: string;
   priority?: boolean;
   fallback?: "icon" | "initials";
-  fallbackIcon?: IconType;
+  fallbackIcon?: FallbackIconName;
   fallbackText?: string;
 };
 
@@ -23,11 +44,12 @@ export default function SafeImage({
   sizes,
   priority,
   fallback = "icon",
-  fallbackIcon: Icon,
+  fallbackIcon,
   fallbackText,
 }: SafeImageProps) {
   const [failed, setFailed] = useState(false);
   const showFallback = !src || failed;
+  const Icon = fallbackIcon ? FALLBACK_ICONS[fallbackIcon] : null;
 
   if (showFallback) {
     return (

@@ -4,7 +4,6 @@ import {
   ChevronRight,
   Eye,
   Home,
-  Newspaper,
 } from "lucide-react";
 import type { Metadata } from "next";
 import Link from "next/link";
@@ -154,7 +153,7 @@ async function NewsArticle({ params }: { params: ArticleParams }) {
                 src={article.imageUrl}
                 alt={article.title}
                 fallback="icon"
-                fallbackIcon={Newspaper}
+                fallbackIcon="newspaper"
                 sizes="(max-width: 896px) 100vw, 896px"
                 priority
               />

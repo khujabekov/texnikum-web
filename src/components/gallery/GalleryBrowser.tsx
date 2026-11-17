@@ -157,7 +157,7 @@ export default function GalleryBrowser({ items }: { items: GalleryPhoto[] }) {
                 src={photo.imageUrl}
                 alt={photo.title}
                 fallback="icon"
-                fallbackIcon={ImageIcon}
+                fallbackIcon="image"
                 className="transition-transform duration-700 group-hover:scale-110"
                 sizes="(max-width:640px) 50vw, 25vw"
               />

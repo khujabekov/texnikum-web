@@ -97,7 +97,7 @@ export default function NewsSection({ items }: { items: NewsItem[] }) {
                 src={featured.imageUrl}
                 alt={featured.title}
                 fallback="icon"
-                fallbackIcon={Newspaper}
+                fallbackIcon="newspaper"
                 className="transition-transform duration-700 group-hover:scale-105"
                 sizes="(max-width:640px) 100vw, 45vw"
               />
@@ -128,7 +128,7 @@ export default function NewsSection({ items }: { items: NewsItem[] }) {
                   src={item.imageUrl}
                   alt={item.title}
                   fallback="icon"
-                  fallbackIcon={Newspaper}
+                  fallbackIcon="newspaper"
                   className="transition-transform duration-700 group-hover:scale-105"
                   sizes="(max-width:1024px) 100vw, 33vw"
                 />

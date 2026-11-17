@@ -92,7 +92,7 @@ export default function Navbar({ siteName, logoUrl, socials }: NavbarProps) {
                   src={logoUrl}
                   alt={siteName}
                   fallback="icon"
-                  fallbackIcon={GraduationCap}
+                  fallbackIcon="graduation"
                   sizes="44px"
                 />
               ) : (

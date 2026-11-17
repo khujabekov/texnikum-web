@@ -4,7 +4,6 @@ import { motion } from "framer-motion";
 import {
   ArrowRight,
   Clock,
-  Image as ImageIcon,
   Mail,
   MapPin,
   Phone,
@@ -114,7 +113,7 @@ export default function GalleryContact({
                     src={photo.imageUrl}
                     alt={photo.title}
                     fallback="icon"
-                    fallbackIcon={ImageIcon}
+                    fallbackIcon="image"
                     className="transition-transform duration-700 group-hover:scale-110"
                     sizes="(max-width:640px) 50vw, 25vw"
                   />

@@ -1,7 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { ArrowRight, CalendarDays, Eye, Newspaper } from "lucide-react";
+import { ArrowRight, CalendarDays, Eye } from "lucide-react";
 import Link from "next/link";
 import SafeImage from "@/components/SafeImage";
 import type { NewsItem } from "@/lib/dto";
@@ -33,7 +33,7 @@ export default function NewsGrid({ items }: { items: NewsItem[] }) {
               src={item.imageUrl}
               alt={item.title}
               fallback="icon"
-              fallbackIcon={Newspaper}
+              fallbackIcon="newspaper"
               className="transition-transform duration-700 group-hover:scale-105"
               sizes="(max-width:640px) 100vw, (max-width:1024px) 50vw, 33vw"
             />

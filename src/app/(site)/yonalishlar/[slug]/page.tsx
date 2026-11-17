@@ -4,7 +4,6 @@ import {
   BookOpen,
   ChevronRight,
   Clock,
-  Compass,
   Home,
 } from "lucide-react";
 import type { Metadata } from "next";
@@ -109,7 +108,7 @@ async function DirectionDetail({ params }: { params: DirectionPageParams }) {
                 src={direction.imageUrl}
                 alt={direction.title}
                 fallback="icon"
-                fallbackIcon={Compass}
+                fallbackIcon="compass"
                 sizes="(max-width: 1024px) 100vw, 55vw"
                 priority
               />

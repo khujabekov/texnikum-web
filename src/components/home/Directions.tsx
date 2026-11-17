@@ -1,7 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { ArrowRight, BookOpen, Clock, Compass } from "lucide-react";
+import { ArrowRight, BookOpen, Clock } from "lucide-react";
 import Link from "next/link";
 import SafeImage from "@/components/SafeImage";
 import type { DirectionItem } from "@/lib/dto";
@@ -50,7 +50,7 @@ export default function Directions({ items }: { items: DirectionItem[] }) {
                   src={direction.imageUrl}
                   alt={direction.title}
                   fallback="icon"
-                  fallbackIcon={Compass}
+                  fallbackIcon="compass"
                   className="transition-transform duration-700 group-hover:scale-105"
                   sizes="(max-width:640px) 100vw, (max-width:1024px) 50vw, 33vw"
                 />

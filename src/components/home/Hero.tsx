@@ -6,7 +6,7 @@ import {
   useTransform,
   type Variants,
 } from "framer-motion";
-import { ArrowRight, ChevronDown, GraduationCap, Phone, Sparkles } from "lucide-react";
+import { ArrowRight, ChevronDown, Phone, Sparkles } from "lucide-react";
 import Link from "next/link";
 import SafeImage from "@/components/SafeImage";
 import type { StatItem } from "@/lib/dto";
@@ -150,7 +150,7 @@ export default function Hero({
                 src={imageUrl}
                 alt={imageAlt}
                 fallback="icon"
-                fallbackIcon={GraduationCap}
+                fallbackIcon="graduation"
                 sizes="(max-width:1024px) 100vw, 50vw"
                 priority
               />
