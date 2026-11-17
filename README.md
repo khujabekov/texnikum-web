@@ -62,3 +62,30 @@ docker compose up -d --build
 | `npm run db:seed` | Demo ma'lumotlar + admin foydalanuvchi |
 | `npm run db:generate` | Prisma client'ni generatsiya qilish |
 | `npm run lint` | ESLint |
+| `npm run typecheck` | TypeScript tekshiruvi (`tsc --noEmit`) |
+
+## AI agentlar bilan ishlash
+
+Repozitoriy istalgan mashinada clone qilinib, AI agent (Claude Code, Cursor, opencode, Codex va h.k.) orqali o'zgartirilishi mumkin. Buning uchun:
+
+1. Agentga **avval `AGENTS.md` faylini o'qishni** aytng (Claude Code uchun `CLAUDE.md` avtomatik o'qiladi — u `AGENTS.md`ga havola qiladi)
+2. Yangi mashinada oddiy setup:
+   ```bash
+   git clone https://github.com/khujabekov/texnikum-web.git
+   cd texnikum-web
+   npm install
+   cp .env.example .env      # JWT_SECRET generatsiya qiling
+   npm run db:push
+   npm run db:seed           # faqat bo'sh baza uchun (demo ma'lumotlar)
+   npm run dev
+   ```
+3. Har o'zgarishdan keyin tekshiruv: `npm run typecheck`, `npm run lint`, kerak bo'lsa `npm run build`
+
+Hujjatlar:
+
+- `AGENTS.md` — agentlar uchun to'liq qo'llanma (arxitektura, qoidalar, gotcha'lar)
+- `docs/ARCHITECTURE.md` — so'rov oqimlari, kesh, auth, yuklash, Docker
+- `docs/DATA-BACKUP.md` — baza va yuklangan fayllarni zaxiralash/tiklash
+
+> Muhim: real ma'lumotlar (`.env`, `prisma/dev.db`, `public/uploads/`) repoda saqlanmaydi. Yangi clone'da demo seed bo'ladi; real ma'lumotni ko'chirish uchun `docs/DATA-BACKUP.md`ga qarang.
+

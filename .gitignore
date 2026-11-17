@@ -46,6 +46,10 @@ next-env.d.ts
 # database
 prisma/*.db
 
+# uploaded files (persist on the host / Docker volume)
+/public/uploads/*
+!/public/uploads/.gitkeep
+
 # agent tooling
 /.claude/
 /.agents/
